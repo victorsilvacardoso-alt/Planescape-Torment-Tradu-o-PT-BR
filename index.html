@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planescape: Torment — Novelização PT-BR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#f5efe0; --gold:#9a7a48; --gold-lt:#c4a06a; --gold-dim:#6b5430;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0d0b08;color:var(--parchment);font-family:'Crimson Pro',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.35}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:4rem 2rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,#2a1a08 0%,transparent 70%),radial-gradient(ellipse 60% 80% at 20% 80%,#1a0d04 0%,transparent 60%),#0a0704;z-index:0}
+.hero-bg::after{content:'';position:absolute;top:var(--wheel-top,54%);left:var(--wheel-left,50%);transform:translate(-50%,-50%);width:min(80vw,700px);height:min(80vw,700px);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-110 -110 220 220'%3E%3Cg stroke='%239a7a48' stroke-width='0.8' fill='none' opacity='0.10'%3E%3Ccircle r='100'/%3E%3Ccircle r='96'/%3E%3Ccircle r='32'/%3E%3Ccircle r='65' stroke-dasharray='4 3'/%3E%3Cline x1='0' y1='-100' x2='0' y2='100'/%3E%3Cline x1='-100' y1='0' x2='100' y2='0'/%3E%3Cline x1='-70.7' y1='-70.7' x2='70.7' y2='70.7'/%3E%3Cline x1='70.7' y1='-70.7' x2='-70.7' y2='70.7'/%3E%3Ccircle cx='0' cy='-65' r='3' fill='%239a7a48'/%3E%3Ccircle cx='46' cy='-46' r='3' fill='%239a7a48'/%3E%3Ccircle cx='65' cy='0' r='3' fill='%239a7a48'/%3E%3Ccircle cx='46' cy='46' r='3' fill='%239a7a48'/%3E%3Ccircle cx='0' cy='65' r='3' fill='%239a7a48'/%3E%3Ccircle cx='-46' cy='46' r='3' fill='%239a7a48'/%3E%3Ccircle cx='-65' cy='0' r='3' fill='%239a7a48'/%3E%3Ccircle cx='-46' cy='-46' r='3' fill='%239a7a48'/%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;z-index:0;animation:slowspin 120s linear infinite}
+@keyframes slowspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:760px}
+.sigil-lg{display:block;margin:0 auto 1.8rem;width:64px;height:64px;opacity:0.85;animation:fadein 1.4s ease both}
+.eyebrow{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:1.2rem;animation:fadein 1s ease 0.2s both}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(2.6rem,7vw,5rem);font-weight:900;line-height:1.05;letter-spacing:0.03em;color:var(--parchment);text-shadow:0 2px 40px rgba(154,122,72,0.3);animation:fadein 1s ease 0.4s both}
+.hero-title em{display:block;font-style:normal;color:var(--gold-lt);font-size:0.55em;letter-spacing:0.18em;margin-top:0.3em}
+.hero-rule{display:flex;align-items:center;gap:1rem;margin:2.2rem auto;max-width:420px;animation:fadein 1s ease 0.6s both}
+.hero-rule span{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold-dim),transparent)}
+.hero-sub{font-style:italic;font-size:1.2rem;color:#c8b898;max-width:560px;margin:0 auto 1rem;line-height:1.6;animation:fadein 1s ease 0.8s both}
+.hero-fan{font-size:0.82rem;color:var(--gold-dim);letter-spacing:0.08em;margin-bottom:2.4rem;animation:fadein 1s ease 0.9s both}
+.hero-cta{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;animation:fadein 1s ease 1s both}
+.hero-credits{font-size:0.78rem;color:#5a4a34;margin-top:1.4rem;line-height:1.9;animation:fadein 1s ease 1.1s both}
+.hero-credits em{color:#7a6448;font-style:normal}
+@keyframes fadein{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.6rem;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.9rem 2rem;border:1px solid var(--gold-dim);text-decoration:none;transition:all 0.3s ease}
+.btn-primary{background:linear-gradient(135deg,#2a1e0a,#1a1005);color:var(--gold-lt);border-color:var(--gold);box-shadow:0 0 20px rgba(154,122,72,0.15)}
+.btn-primary:hover{background:linear-gradient(135deg,#3a2a10,#2a1a08);box-shadow:0 0 35px rgba(154,122,72,0.3);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:1.4rem;padding:0 2rem;max-width:900px;margin:0 auto}
+.divider span{flex:1;height:1px;background:linear-gradient(to right,transparent,#3a2e1e,transparent)}
+
+/* ABOUT */
+.about{padding:6rem 2rem;max-width:920px;margin:0 auto}
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:start;margin-top:3.5rem}
+@media(max-width:680px){.about-grid{grid-template-columns:1fr;gap:2.5rem}}
+.section-label{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.4em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:0.8rem}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:600;color:var(--parchment);line-height:1.2;margin-bottom:1.5rem}
+.about-text p{color:#c0b09a;margin-bottom:1.1em;font-size:1.05rem}
+.about-text p:last-child{margin-bottom:0}
+.about-text em{color:var(--parchment);font-style:italic}
+.stats{display:flex;flex-direction:column;gap:1.8rem;padding-top:0.5rem}
+.stat{border-left:2px solid var(--gold-dim);padding-left:1.2rem}
+.stat-num{font-family:'Cinzel',serif;font-size:2rem;font-weight:900;color:var(--gold-lt);line-height:1}
+.stat-label{font-size:0.88rem;color:#8a7a62;letter-spacing:0.04em;margin-top:0.2rem}
+
+/* GALLERY */
+.gallery{padding:5rem 2rem 6rem;max-width:1300px;margin:0 auto}
+.gallery-header{text-align:center;margin-bottom:2rem}
+.gallery-header h3{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.4em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:0.6rem}
+.gallery-header h2{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:600;color:var(--parchment)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,220px));
+  gap:10px;
+  justify-content:center;
+}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,200px))}}
+@media(max-width:660px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,180px))}}
+@media(max-width:440px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,160px))}}
+.gitem{aspect-ratio:2/3;overflow:hidden;cursor:zoom-in;background:#0a0704}
+.gitem img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease,filter 0.3s ease;filter:brightness(0.87)}
+.gitem:hover img{transform:scale(1.04);filter:brightness(1.08)}
+
+.gallery-sep{margin:4rem 0 3rem}
+
+/* DOWNLOAD */
+.download{padding:4rem 2rem 6rem;max-width:900px;margin:0 auto}
+.download-header{text-align:center;margin-bottom:3rem}
+.download-cards{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:580px){.download-cards{grid-template-columns:1fr}}
+.dcard{background:linear-gradient(135deg,#1a1208,#110d04);border:1px solid #2e2310;padding:2.2rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;display:flex;flex-direction:column}
+.dcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold-dim),transparent)}
+.dcard:hover{border-color:var(--gold-dim);transform:translateY(-4px)}
+.dcard-icon{width:44px;height:44px;background:rgba(154,122,72,0.12);border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;color:var(--gold)}
+.dcard-icon svg{width:22px;height:22px}
+.dcard-title{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;color:var(--parchment);margin-bottom:0.4rem}
+.dcard-sub{font-size:0.82rem;color:var(--gold-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem}
+.dcard-desc{font-size:0.92rem;color:#8a7a62;line-height:1.6;margin-bottom:1.8rem;flex:1}
+
+/* FOOTER */
+.footer{padding:4rem 2rem;text-align:center;border-top:1px solid #1e1608}
+.footer-credits{font-size:0.8rem;color:#5a4e3a;line-height:2.1;max-width:620px;margin:1.5rem auto 0}
+.footer-credits a{color:var(--gold-dim);text-decoration:none}
+.footer-credits a:hover{color:var(--gold)}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:10000;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:95vw;max-height:95vh;width:auto;height:auto;object-fit:contain;box-shadow:0 0 80px rgba(0,0,0,0.9)}
+.lb-close{position:absolute;top:1.2rem;right:1.8rem;font-size:1.8rem;color:var(--gold);cursor:pointer;background:none;border:none;font-family:'Cinzel',serif;opacity:0.7}
+.lb-close:hover{opacity:1}
+.sigil-sm{display:inline-block;vertical-align:middle;opacity:0.7}
+</style>
+</head>
+<body>
+
+<div class="lightbox" id="lb" onclick="closeLb()">
+  <button class="lb-close">✕</button>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <img class="sigil-lg" src="imagens/img_000.png" alt="Símbolo Torment" style="width:72px;height:auto;filter:brightness(0.9);">
+    <p class="eyebrow">Novelização &ensp;·&ensp; Tradução PT-BR &ensp;·&ensp; 2026</p>
+    <h1 class="hero-title">Planescape<em>Torment</em></h1>
+    <div class="hero-rule">
+      <span></span>
+      <svg class="sigil-sm" width="18" height="18" viewBox="-10 -10 20 20"><g stroke="#9a7a48" stroke-width="0.9" fill="none"><circle r="9"/><circle r="3"/><line x1="0" y1="-9" x2="0" y2="9"/><line x1="-9" y1="0" x2="9" y2="0"/><line x1="-6.4" y1="-6.4" x2="6.4" y2="6.4"/><line x1="6.4" y1="-6.4" x2="-6.4" y2="6.4"/></g></svg>
+      <span></span>
+    </div>
+    <p class="hero-sub">A novelização completa do RPG que definiu uma geração, agora em português brasileiro — com pós-epílogo inédito e 28 artes digitais originais.</p>
+    <p class="hero-fan">✦&ensp; Projeto de fã, para fãs — gratuito, sem fins comerciais &ensp;✦</p>
+    <div class="hero-cta">
+      <a href="Planescape_Torment_PT-BR.epub" class="btn btn-primary" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        Baixar EPUB
+      </a>
+      <a href="Planescape_Torment_PT-BR_visual.pdf" class="btn btn-primary" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        Baixar PDF
+      </a>
+    </div>
+    <p class="hero-credits">
+      Texto original © 1999 Interplay Productions: Chris Avellone e Colin McComb. Todos os direitos reservados.<br>
+      Novelização por ShadowCatboy &ensp;·&ensp; Edição por Logan Stromberg &ensp;·&ensp; Adaptado da edição de Rhyss Hess<br>
+      Tradução PT-BR, pós-epílogo e arte digital: <em>Victor Cardoso</em> &ensp;·&ensp; 2026
+    </p>
+  </div>
+</section>
+
+<div style="width:100%;height:1px;background:linear-gradient(to right,transparent,#3a2e1e 20%,#6b5430 50%,#3a2e1e 80%,transparent);margin:0;"></div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="section-label">O Projeto</p>
+      <h2 class="section-title">O que pode mudar a natureza de um homem?</h2>
+      <p><em>Planescape: Torment</em> (1999) é considerado por muitos o melhor RPG já criado — não por seus sistemas, mas por sua escrita: filosófica, brutal e profundamente humana.</p>
+      <p>A novelização de ShadowCatboy captura essa experiência narrativa. Este projeto a traz ao português brasileiro com atenção às nuances do original, pós-epílogo inédito e 28 artes digitais criadas especialmente para esta edição.</p>
+      <p>Um trabalho de fã, feito com amor — disponível gratuitamente para quem, como eu, sempre quis ler essa história do jeito que ela merece.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">117</div><div class="stat-label">Capítulos + Prólogo, Epílogo e Pós-Epílogo</div></div>
+      <div class="stat"><div class="stat-num">28</div><div class="stat-label">Artes digitais</div></div>
+      <div class="stat"><div class="stat-num">~1.400</div><div class="stat-label">Páginas na edição ilustrada em PDF</div></div>
+      <div class="stat"><div class="stat-num">2026</div><div class="stat-label">Tradução PT-BR por Victor Cardoso</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span></span><svg width="22" height="22" viewBox="-11 -11 22 22"><g stroke="#3a2e1e" stroke-width="0.9" fill="none"><circle r="10"/><circle r="3.2"/><line x1="0" y1="-10" x2="0" y2="10"/><line x1="-10" y1="0" x2="10" y2="0"/><line x1="-7.1" y1="-7.1" x2="7.1" y2="7.1"/><line x1="7.1" y1="-7.1" x2="-7.1" y2="7.1"/></g></svg><span></span></div>
+
+<!-- GALLERY PDF -->
+<section class="gallery">
+  <div class="gallery-header">
+    <h3>Edição Ilustrada · PDF</h3>
+    <h2 class="section-title">Artes coloridas</h2>
+  </div>
+  <div class="gallery-grid" id="gallery-color">
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_001.jpg" alt="capa_tradução_novel_pst.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_002.jpg" alt="22_sigil_v3.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_003.jpg" alt="1_odespertar.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_004.jpg" alt="2_encontrandomorte.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_005.jpg" alt="3_encontrocomdhall.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_006.jpg" alt="4_eivene.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_007.jpg" alt="14_deionarra.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_008.jpg" alt="5_primeiraaparicaosigil.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_009.jpg" alt="25_ladyofpain.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_010.jpg" alt="6_gatheringdustbar.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_011.jpg" alt="7_smolderingcorpse_ignus.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_012.jpg" alt="9_dakkon.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_013.jpg" alt="11_fell.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_014.jpg" alt="26_Pharod.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_015.jpg" alt="10_annah.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_016.jpg" alt="21_sigil_2.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_017.jpg" alt="8_bordel_grace.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_018.jpg" alt="23_nordom.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_019.jpg" alt="12_Ravel_grupo.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_020.jpg" alt="19_namelessone_naturezadohomem.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_021.jpg" alt="24_Vhailor.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_022.jpg" alt="13_pilardecranios_baator.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_023.jpg" alt="20_namelessone_deionerra.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_024.jpg" alt="18_osmuitosimortais.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_025.jpg" alt="23_variosnameless.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_026.jpg" alt="15_encontrocomtranscendentone.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_027.jpg" alt="16_final_bloodwar.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_028.jpg" alt="17_epilogo_morte.png" loading="lazy"></div>
+  </div>
+
+  <div class="gallery-sep">
+    <div class="divider"><span></span><svg width="22" height="22" viewBox="-11 -11 22 22"><g stroke="#3a2e1e" stroke-width="0.9" fill="none"><circle r="10"/><circle r="3.2"/><line x1="0" y1="-10" x2="0" y2="10"/><line x1="-10" y1="0" x2="10" y2="0"/><line x1="-7.1" y1="-7.1" x2="7.1" y2="7.1"/><line x1="7.1" y1="-7.1" x2="-7.1" y2="7.1"/></g></svg><span></span></div>
+  </div>
+
+  <!-- GALLERY KINDLE -->
+  <div class="gallery-header">
+    <h3>Edição Kindle · EPUB</h3>
+    <h2 class="section-title">Artes em P&amp;B</h2>
+  </div>
+  <div class="gallery-grid" id="gallery-bw">
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_029.jpg" alt="capa_tradução_novel_pst.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_030.jpg" alt="22_sigil_v3.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_031.jpg" alt="1_odespertar.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_032.jpg" alt="2_encontrandomorte.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_033.jpg" alt="3_encontrocomdhall.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_034.jpg" alt="4_eivene.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_035.jpg" alt="14_deionarra.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_036.jpg" alt="5_primeiraaparicaosigil.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_037.jpg" alt="25_ladyofpain.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_038.jpg" alt="6_gatheringdustbar.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_039.jpg" alt="7_smolderingcorpse_ignus.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_040.jpg" alt="9_dakkon.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_041.jpg" alt="11_fell.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_042.jpg" alt="26_Pharod.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_043.jpg" alt="10_annah.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_044.jpg" alt="21_sigil_2.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_045.jpg" alt="8_bordel_grace.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_046.jpg" alt="23_nordom.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_047.jpg" alt="12_Ravel_grupo.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_048.jpg" alt="19_namelessone_naturezadohomem.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_049.jpg" alt="24_Vhailor.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_050.jpg" alt="13_pilardecranios_baator.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_051.jpg" alt="20_namelessone_deionerra.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_052.jpg" alt="18_osmuitosimortais.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_053.jpg" alt="23_variosnameless.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_054.jpg" alt="15_encontrocomtranscendentone.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_055.jpg" alt="16_final_bloodwar.png" loading="lazy"></div>
+    <div class="gitem" onclick="openLb(this)"><img src="imagens/img_056.jpg" alt="17_epilogo_morte.png" loading="lazy"></div>
+  </div>
+</section>
+
+<div class="divider"><span></span><svg width="22" height="22" viewBox="-11 -11 22 22"><g stroke="#3a2e1e" stroke-width="0.9" fill="none"><circle r="10"/><circle r="3.2"/><line x1="0" y1="-10" x2="0" y2="10"/><line x1="-10" y1="0" x2="10" y2="0"/><line x1="-7.1" y1="-7.1" x2="7.1" y2="7.1"/><line x1="7.1" y1="-7.1" x2="-7.1" y2="7.1"/></g></svg><span></span></div>
+
+<!-- DOWNLOAD -->
+<section class="download">
+  <div class="download-header">
+    <p class="section-label">Downloads gratuitos</p>
+    <h2 class="section-title">Escolha seu formato</h2>
+  </div>
+  <div class="download-cards">
+    <div class="dcard">
+      <div class="dcard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div>
+      <div class="dcard-title">Edição Kindle</div>
+      <div class="dcard-sub">EPUB3 · 14 MB</div>
+      <p class="dcard-desc">Otimizado para Kindle e leitores de e-book. 28 artes em P&amp;B, tipografia calibrada para telas e-ink, navegação por capítulos.</p>
+      <a href="Planescape_Torment_PT-BR.epub" class="btn btn-primary" download style="width:100%;justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        Baixar EPUB
+      </a>
+    </div>
+    <div class="dcard">
+      <div class="dcard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <div class="dcard-title">Edição Ilustrada</div>
+      <div class="dcard-sub">PDF · 15 MB</div>
+      <p class="dcard-desc">Para leitura em PC e tablet. 28 artes digitais coloridas.</p>
+      <a href="Planescape_Torment_PT-BR_visual.pdf" class="btn btn-primary" download style="width:100%;justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        Baixar PDF
+      </a>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:3rem 2rem 2rem;background:linear-gradient(to bottom,transparent,rgba(20,12,4,0.5),transparent);">
+  <p style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.4em;color:#3a2a14;text-transform:uppercase;">✦ &ensp; Updated my journal &ensp; ✦</p>
+</div>
+<footer class="footer">
+  <svg width="28" height="28" viewBox="-14 -14 28 28" style="opacity:0.3;"><g stroke="#9a7a48" stroke-width="0.8" fill="none"><circle r="13"/><circle r="4"/><line x1="0" y1="-13" x2="0" y2="13"/><line x1="-13" y1="0" x2="13" y2="0"/><line x1="-9.2" y1="-9.2" x2="9.2" y2="9.2"/><line x1="9.2" y1="-9.2" x2="-9.2" y2="9.2"/></g></svg>
+  <div class="footer-credits">
+    Texto original © 1999 Interplay Productions: Chris Avellone e Colin McComb. Todos os direitos reservados.<br>
+    Novelização por ShadowCatboy &ensp;·&ensp; Edição por Logan Stromberg &ensp;·&ensp; Adaptado da edição de Rhyss Hess<br>
+    Tradução PT-BR, pós-epílogo e arte digital: <a href="#">Victor Cardoso</a> &ensp;·&ensp; 2026<br><br>
+    <span style="color:#3a2e1e;">Projeto de fã sem fins comerciais. Nenhum conteúdo desta página é vendido ou monetizado.</span>
+  </div>
+</footer>
+
+<script>
+function openLb(el){
+  document.getElementById('lb-img').src=el.querySelector('img').src;
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('on');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+</script>
+
+<script id="align-wheels">
+(function() {
+  function alignWheels() {
+    var heroBg  = document.querySelector('.hero-bg');
+    var heroEl  = document.querySelector('.hero');
+    var sigilSm = document.querySelector('.hero-rule .sigil-sm');
+    if (!heroBg || !heroEl || !sigilSm) return;
+    var heroRect  = heroEl.getBoundingClientRect();
+    var sigilRect = sigilSm.getBoundingClientRect();
+    var cx = sigilRect.left + sigilRect.width  / 2;
+    var cy = sigilRect.top  + sigilRect.height / 2;
+    var topPct  = ((cy - heroRect.top)  / heroRect.height * 100).toFixed(2) + '%';
+    var leftPct = ((cx - heroRect.left) / heroRect.width  * 100).toFixed(2) + '%';
+    heroBg.style.setProperty('--wheel-top',  topPct);
+    heroBg.style.setProperty('--wheel-left', leftPct);
+  }
+  window.addEventListener('load',   alignWheels);
+  window.addEventListener('resize', alignWheels);
+  // Also run after fonts load (Cinzel may affect layout)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(alignWheels);
+  }
+})();
+</script>
+
+</body>
+</html>
